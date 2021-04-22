@@ -1,27 +1,13 @@
 kind: pipeline
 name: default
+
+workspace:
+  base: /go
+  path: src/github.com/drbothen/droneTest
+
 steps:
 - name: test
- image: golang:1.10-alpine
- commands:
-   - "go test"
-- name: build
- image: golang:1.10-alpine
- commands:
-   - "go build -o ./myapp"
-- name: publish
-  image: plugins/github-release
-  settings:
-    api_key:
-        from_secret: github_token
-    files:
-      - ./*
-   checksum:
-      - md5
-      - sha1
-      - sha256
-      - sha512
-      - adler32
-      - crc32
-  when:
-    event: tag
+  image: golang
+  commands:
+  - go get
+  - go test
