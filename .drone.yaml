@@ -11,3 +11,20 @@ steps:
   image: golang:1.10-alpine
   commands:
   - "go build -o ./myapp"
+
+- name: publish
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    files:
+      - ./*
+    checksum:
+      - md5
+      - sha1
+      - sha256
+      - sha512
+      - adler32
+      - crc32
+  when:
+    event: tag
