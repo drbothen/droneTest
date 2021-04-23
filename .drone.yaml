@@ -12,14 +12,14 @@ steps:
   commands:
   - "go build -o ./myapp"
   
- - name: create_changelog
-   image: naorlivne/drone-github-changelog-generator
-   settings:
-     github_user: BOHICA LABS
-     github_project: DroneTest
-     output_path: CHANGELOG.md
-   when:
-     event: tag
+- name: create_changelog
+  image: naorlivne/drone-github-changelog-generator
+  settings:
+    github_user: BOHICA LABS
+    github_project: DroneTest
+    output_path: CHANGELOG.md
+  when:
+    event: tag
   
 - name: publish
   image: plugins/github-release
