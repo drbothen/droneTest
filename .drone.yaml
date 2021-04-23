@@ -16,15 +16,7 @@ steps:
   image: plugins/github-release
   settings:
     api_key:
-        from_secret: github_token
-    files:
-      - ./myapp
-   checksum:
-      - md5
-      - sha1
-      - sha256
-      - sha512
-      - adler32
-      - crc32
+      from_secret: github_token
+    files: ./myapp
   when:
     event: tag
