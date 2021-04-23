@@ -18,5 +18,7 @@ steps:
     api_key:
       from_secret: github_token
     files: ./myapp
+    checksum:
+      - md5
   when:
     event: tag
