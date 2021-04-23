@@ -18,7 +18,7 @@ steps:
     api_key:
         from_secret: github_token
     files:
-      - ./myapp/*
+      - ./myapp
    checksum:
       - md5
       - sha1
