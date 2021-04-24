@@ -13,9 +13,9 @@ steps:
   - "go build -o ./myapp"
   
 - name: create_changelog
-  image: thegeeklab/git-chglog:latest
+  image: quay.io/git-chglog/git-chglog:latest
   commands:
-    - "git-chglog ${DRONE_TAG} > ./CHANGELOG.md"
+    - "apk --update add git less openssh && git-chglog ${DRONE_TAG} > ./CHANGELOG.md"
   when:
     event: tag
   
