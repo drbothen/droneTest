@@ -15,7 +15,6 @@ steps:
 - name: create_changelog
   image: quay.io/git-chglog/git-chglog:latest
   commands:
-    - "apk --update add git less openssh"
     - "git fetch origin --prune --tags"
     - "git-chglog ${DRONE_TAG} > CHANGELOG.md"
   when:
@@ -26,15 +25,12 @@ steps:
   settings:
     api_key:
       from_secret: github_token
-    files: ./myapp
+    files:
+      - ./myapp
+      - CHANGELOG.md
     note: CHANGELOG.md
     title: "Version ${DRONE_TAG##v}"
     checksum:
-      - md5
-      - sha1
-      - sha256
       - sha512
-      - adler32
-      - crc32
   when:
     event: tag
