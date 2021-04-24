@@ -16,7 +16,7 @@ steps:
   image: quay.io/git-chglog/git-chglog:latest
   commands:
     - "apk --update add git less openssh"
-    - "git tag"
+    - "git fetch origin --prune --tags"
     - "git-chglog ${DRONE_TAG} > ./CHANGELOG.md"
   when:
     event: tag
