@@ -23,14 +23,13 @@ steps:
 - name: publish
   image: plugins/github-release
   settings:
-    tags: ${DRONE_TAG##v}
     api_key:
       from_secret: github_token
     files:
       - ./myapp
       - RELEASELOG.md
     note: RELEASELOG.md
-    title: "Version ${DRONE_TAG}"
+    title: "Release ${DRONE_TAG}"
     overwrite: true
     checksum:
       - sha512
