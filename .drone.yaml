@@ -30,6 +30,7 @@ steps:
       - CHANGELOG.md
     note: CHANGELOG.md
     title: "Version ${DRONE_TAG##v}"
+    overwrite: true
     checksum:
       - sha512
   when:
