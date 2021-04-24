@@ -15,7 +15,8 @@ steps:
 - name: create_changelog
   image: quay.io/git-chglog/git-chglog:latest
   commands:
-    - "apk --update add git less openssh && git-chglog ${DRONE_TAG} > ./CHANGELOG.md"
+    - "apk --update add git less openssh"
+    - "git-chglog ${DRONE_TAG} > ./CHANGELOG.md"
   when:
     event: tag
   
