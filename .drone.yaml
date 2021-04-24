@@ -29,7 +29,7 @@ steps:
       - ./myapp
       - CHANGELOG.md
     note: CHANGELOG.md
-    title: "Version ${DRONE_TAG##v}"
+    title: "Version ${DRONE_TAG}"
     overwrite: true
     checksum:
       - sha512
