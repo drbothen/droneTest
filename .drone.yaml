@@ -26,6 +26,7 @@ steps:
       from_secret: github_token
     files: ./myapp
     note: ./CHANGELOG.md
+    title: "Version ${DRONE_TAG##v}"
     checksum:
       - md5
       - sha1
