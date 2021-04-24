@@ -12,23 +12,24 @@ steps:
   commands:
   - "go build -o ./myapp"
   
-- name: create_changelog
+- name: create releaselog
   image: quay.io/git-chglog/git-chglog:latest
   commands:
     - "git fetch origin --prune --tags"
-    - "git-chglog ${DRONE_TAG} > CHANGELOG.md"
+    - "git-chglog ${DRONE_TAG} > RELEASELOG.md"
   when:
     event: tag
   
 - name: publish
   image: plugins/github-release
   settings:
+    tags: ${DRONE_TAG##v}
     api_key:
       from_secret: github_token
     files:
       - ./myapp
-      - CHANGELOG.md
-    note: CHANGELOG.md
+      - RELEASELOG.md
+    note: RELEASELOG.md
     title: "Version ${DRONE_TAG}"
     overwrite: true
     checksum:
