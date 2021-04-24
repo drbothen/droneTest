@@ -17,7 +17,7 @@ steps:
   commands:
     - "apk --update add git less openssh"
     - "git fetch origin --prune --tags"
-    - "git-chglog ${DRONE_TAG} > ./CHANGELOG.md"
+    - "git-chglog ${DRONE_TAG} > CHANGELOG.md"
   when:
     event: tag
   
@@ -27,7 +27,7 @@ steps:
     api_key:
       from_secret: github_token
     files: ./myapp
-    note: ./CHANGELOG.md
+    note: CHANGELOG.md
     title: "Version ${DRONE_TAG##v}"
     checksum:
       - md5
