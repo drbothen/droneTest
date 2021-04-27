@@ -84,7 +84,7 @@ steps:
     commands:
       - "cat CHANGELOG.md"
 
-  - name: publish
+  - name: publish1
     image: plugins/git-action:1
     settings:
       actions:
