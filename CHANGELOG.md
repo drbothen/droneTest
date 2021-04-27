@@ -2,6 +2,9 @@
 ## [Unreleased]
 
 
+<a name="v0.0.26"></a>
+## [v0.0.26] - 2021-04-26
+
 <a name="v0.0.25"></a>
 ## [v0.0.25] - 2021-04-26
 
@@ -110,7 +113,8 @@
 - **main.go:**  add to message
 
 
-[Unreleased]: https://github.com/drbothen/droneTest/compare/v0.0.25...HEAD
+[Unreleased]: https://github.com/drbothen/droneTest/compare/v0.0.26...HEAD
+[v0.0.26]: https://github.com/drbothen/droneTest/compare/v0.0.25...v0.0.26
 [v0.0.25]: https://github.com/drbothen/droneTest/compare/v0.0.24...v0.0.25
 [v0.0.24]: https://github.com/drbothen/droneTest/compare/v0.0.23...v0.0.24
 [v0.0.23]: https://github.com/drbothen/droneTest/compare/v0.0.22...v0.0.23
