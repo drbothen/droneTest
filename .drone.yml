@@ -43,7 +43,7 @@ name: changelog
 type: docker
 
 steps:
-  - name: clone
+  - name: checkout
     image: plugins/git-action:1
     settings:
       actions:
