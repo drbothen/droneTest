@@ -106,4 +106,3 @@ trigger:
     - master
   event:
     - tag
----
