@@ -46,7 +46,7 @@ steps:
   when:
     event: tag
 
-___
+---
 kind: pipeline
 name: changelog
 type: docker
