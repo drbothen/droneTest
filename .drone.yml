@@ -91,9 +91,9 @@ steps:
       path: /drone/src
       netrc_machine: github.com
       netrc_username:
-        form_secret: global_github_username
+        from_secret: global_github_username
       netrc_password:
-        form_secret: global_github_token
+        from_secret: global_github_token
 
 trigger:
   branch:
