@@ -1,4 +1,3 @@
----
 kind: pipeline
 name: default
 type: docker
@@ -57,7 +56,7 @@ steps:
     settings:
       actions:
         - clone
-      remote: https://github.com/
+      remote: ${DRONE_GIT_HTTP_URL}
       branch: master
       path: /drone/src
       netrc_machine: github.com
