@@ -78,13 +78,13 @@ steps:
     commands:
       - "cat CHANGELOG.md"
 
-  - name: publish1
+  - name: publish
     image: plugins/git-action:1
     settings:
       actions:
         - commit
         - push
-      message: "docs(changelog): Automated changelog update ${DRONE_TAG}"
+      message: "docs(changelog): auto changelog update ${DRONE_TAG} [CI SKIP]"
       author_email: devops@bohicalabs.com
       author_name: bohicalabs
       branch: master
