@@ -1,5 +1,7 @@
+---
 kind: pipeline
 name: default
+type: docker
 
 steps:
 - name: test
@@ -19,6 +21,14 @@ steps:
     - "git-chglog ${DRONE_TAG} > RELEASELOG.md"
   when:
     event: tag
+
+- name: create changelog
+  image: quay.io/git-chglog/git-chglog:latest
+  commands:
+    - "git fetch origin --prune --tags"
+    - "git-chglog > CHANGELOG.md"
+  when:
+    event: tag
   
 - name: publish
   image: plugins/github-release
@@ -35,3 +45,65 @@ steps:
       - sha512
   when:
     event: tag
+g
+___
+kind: pipeline
+name: changelog
+type: docker
+
+steps:
+  - name: clone
+    image: plugins/git-action:1
+    settings:
+      actions:
+        - clone
+      remote: https://github.com/
+      branch: master
+      path: /drone/src
+      netrc_machine: github.com
+      netrc_username:
+        form_secret: global_github_username
+      netrc_password:
+        form_secret: global_github_token
+
+  - name: generate
+    image: quay.io/git-chglog/git-chglog:latest
+    commands:
+      - "git fetch origin --prune --tags"
+      - "git-chglog > CHANGELOG.md"
+    when:
+      event: tag
+
+  - name: diff
+    image: alpine/git:latest
+    commands:
+      - "git diff"
+
+  - name: output
+    image: alpine:latest
+    commands:
+      - "cat CHANGELOG.md"
+
+  - name: publish
+    image: plugins/git-action:1
+    settings:
+      actions:
+        - commit
+        - push
+      message: "docs(changelog): Automated changelog update ${DRONE_TAG}"
+      author_email: devops@bohicalabs.com
+      author_name: bohicalabs
+      branch: master
+      path: /drone/src
+      netrc_machine: github.com
+      netrc_username:
+        form_secret: global_github_username
+      netrc_password:
+        form_secret: global_github_token
+
+trigger:
+  branch:
+    - master
+  event:
+    - tag
+---
