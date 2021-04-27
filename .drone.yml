@@ -3,39 +3,39 @@ name: main
 type: docker
 
 steps:
-- name: test
-  image: golang:1.10-alpine
-  commands:
-  - "go test"
+  - name: test
+    image: golang:1.10-alpine
+    commands:
+    - "go test"
 
-- name: build
-  image: golang:1.10-alpine
-  commands:
-  - "go build -o ./myapp"
-  
-- name: create releaselog
-  image: quay.io/git-chglog/git-chglog:latest
-  commands:
-    - "git fetch origin --prune --tags"
-    - "git-chglog ${DRONE_TAG} > RELEASELOG.md"
-  when:
-    event: tag
-  
-- name: publish
-  image: plugins/github-release
-  settings:
-    api_key:
-      from_secret: global_github_token
-    files:
-      - ./myapp
-      - RELEASELOG.md
-    note: RELEASELOG.md
-    title: "Release ${DRONE_TAG}"
-    overwrite: true
-    checksum:
-      - sha512
-  when:
-    event: tag
+  - name: build
+    image: golang:1.10-alpine
+    commands:
+    - "go build -o ./myapp"
+
+  - name: generate releaselog
+    image: quay.io/git-chglog/git-chglog:latest
+    commands:
+      - "git fetch origin --prune --tags"
+      - "git-chglog ${DRONE_TAG} > RELEASELOG.md"
+    when:
+      event: tag
+
+  - name: publish
+    image: plugins/github-release
+    settings:
+      api_key:
+        from_secret: global_github_token
+      files:
+        - ./myapp
+        - RELEASELOG.md
+      note: RELEASELOG.md
+      title: "Release ${DRONE_TAG}"
+      overwrite: true
+      checksum:
+        - sha512
+    when:
+      event: tag
 
 ---
 kind: pipeline
