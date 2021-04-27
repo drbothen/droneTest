@@ -45,7 +45,7 @@ steps:
       - sha512
   when:
     event: tag
-g
+
 ___
 kind: pipeline
 name: changelog
