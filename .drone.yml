@@ -42,7 +42,24 @@ kind: pipeline
 name: changelog
 type: docker
 
+clone:
+  disable: true
+
 steps:
+  - name: clone
+    image: plugins/git-action:1
+    settings:
+      actions:
+        - clone
+      remote: ${DRONE_GIT_HTTP_URL}
+      branch: master
+      path: /drone/src
+      netrc_machine: github.com
+      netrc_username:
+        form_secret: global_github_username
+      netrc_password:
+        form_secret: global_github_token
+
   - name: generate
     image: quay.io/git-chglog/git-chglog:latest
     commands:
