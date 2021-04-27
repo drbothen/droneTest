@@ -1,5 +1,5 @@
 kind: pipeline
-name: default
+name: main
 type: docker
 
 steps:
@@ -18,14 +18,6 @@ steps:
   commands:
     - "git fetch origin --prune --tags"
     - "git-chglog ${DRONE_TAG} > RELEASELOG.md"
-  when:
-    event: tag
-
-- name: create changelog
-  image: quay.io/git-chglog/git-chglog:latest
-  commands:
-    - "git fetch origin --prune --tags"
-    - "git-chglog > CHANGELOG.md"
   when:
     event: tag
   
