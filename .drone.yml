@@ -96,6 +96,8 @@ steps:
         from_secret: global_github_token
 
 trigger:
+  event:
+    - tag
   ref:
     - refs/heads/master
     - refs/tags/*
