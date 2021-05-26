@@ -118,4 +118,5 @@ steps:
       git_domain: github.com
       git_username:
         from_secret: github_username
-      git_password: github_password
+      git_password:
+        from_secret: github_password
