@@ -120,3 +120,6 @@ steps:
         from_secret: github_username
       git_password:
         from_secret: github_password
+trigger:
+  repo:
+    - drbothen/droneTest
