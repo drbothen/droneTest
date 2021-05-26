@@ -115,8 +115,7 @@ steps:
     image: bohicalabs/drone-git-mirror:1.0.4
     settings:
       target_repo: https://github.com/drbothen/droneTest2.git
-      git_domain: https://github.com
+      git_domain: github.com
       git_username:
-        from_secret: github_user
-      git_password:
         from_secret: github_password
+      git_password: docker-publish
