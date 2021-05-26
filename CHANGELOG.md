@@ -2,6 +2,19 @@
 ## [Unreleased]
 
 
+<a name="v0.0.28"></a>
+## [v0.0.28] - 2021-05-25
+### Bug Fixes
+- **drone:** correct version
+- **drone:** correct setting
+- **drone:** correct settings
+- **drone:** correct URL
+- **drone:** maybe...
+- **drone:** correct domain
+- **drone:** add version number
+- **test:** yep
+
+
 <a name="v0.0.27"></a>
 ## [v0.0.27] - 2021-05-24
 
@@ -116,7 +129,8 @@
 - **main.go:**  add to message
 
 
-[Unreleased]: https://github.com/drbothen/droneTest/compare/v0.0.27...HEAD
+[Unreleased]: https://github.com/drbothen/droneTest/compare/v0.0.28...HEAD
+[v0.0.28]: https://github.com/drbothen/droneTest/compare/v0.0.27...v0.0.28
 [v0.0.27]: https://github.com/drbothen/droneTest/compare/v0.0.26...v0.0.27
 [v0.0.26]: https://github.com/drbothen/droneTest/compare/v0.0.25...v0.0.26
 [v0.0.25]: https://github.com/drbothen/droneTest/compare/v0.0.24...v0.0.25
