@@ -101,3 +101,22 @@ trigger:
   ref:
     - refs/heads/master
     - refs/tags/*
+
+---
+kind: pipeline
+name: mirroring
+type: docker
+
+clone:
+  disable: true
+
+steps:
+  - name: mirror
+    image: bohicalabs/drone-git-mirror
+    settings:
+      target_repo: https://github.com/drbothen/droneTest2.git
+      git_domain: github.com
+      git_username:
+        from_secret: github_user
+      git_password:
+        from_secret: github_password
