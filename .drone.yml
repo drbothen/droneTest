@@ -112,7 +112,7 @@ clone:
 
 steps:
   - name: mirror
-    image: bohicalabs/drone-git-mirror:1.0.5
+    image: bohicalabs/drone-git-mirror:1.0.6
     settings:
       target_repo: https://github.com/drbothen/droneTest2.git
       git_domain: github.com
