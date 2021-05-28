@@ -22,7 +22,7 @@ steps:
         from_secret: drone_upload_username
       COMMIT: DRONE_COMMIT
     commands:
-      - "tar -czvf ~/${COMMIT}.tar.gz /dist/artifacts/"
+      - "tar -czvf ~/${COMMIT}.tar.gz ./myapp"
       - "curl -i -u '${USERNAME}:${PASSWORD}' -F 'file=~/${COMMIT}.tar.gz' https://upload.bohicalabs.com"
 
   - name: generate releaselog
