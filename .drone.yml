@@ -23,7 +23,7 @@ steps:
       COMMIT: DRONE_COMMIT
     commands:
       - "tar -czvf /tmp/$COMMIT.tar.gz ./myapp"
-      - "curl -i -u $USERNAME:$PASSWORD -F file=/tmp/$COMMIT.tar.gz https://upload.bohicalabs.com"
+      - "curl -u $USERNAME:$PASSWORD -F file=@/tmp/$COMMIT.tar.gz https://upload.bohicalabs.com"
 
   - name: generate releaselog
     image: quay.io/git-chglog/git-chglog:latest
