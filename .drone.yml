@@ -22,9 +22,8 @@ steps:
         from_secret: drone_upload_username
       COMMIT: DRONE_COMMIT
     commands:
-      - "mkdir /data"
-      - "tar -czvf /data/${COMMIT}.tar.gz /dist/artifacts/"
-      - "curl -i -u '${USERNAME}:${PASSWORD}' -F 'file=/data/${COMMIT}.tar.gz' https://upload.bohicalabs.com"
+      - "tar -czvf ~/${COMMIT}.tar.gz /dist/artifacts/"
+      - "curl -i -u '${USERNAME}:${PASSWORD}' -F 'file=~/${COMMIT}.tar.gz' https://upload.bohicalabs.com"
 
   - name: generate releaselog
     image: quay.io/git-chglog/git-chglog:latest
