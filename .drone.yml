@@ -12,6 +12,22 @@ steps:
     image: golang:1.10-alpine
     commands:
     - "go build -o ./myapp"
+    -
+  - name: cache package
+    image: curlimages/curl:7.77.0
+    environment:
+      PASSWORD:
+        from_secret: drone_upload_password
+      USERNAME:
+        from_secret: drone_upload_username
+      COMMIT: DRONE_COMMIT
+    commands:
+      - "mkdir /data"
+      - "tar -czvf /data/${COMMIT}.tar.gz /dist/artifacts/"
+      - "curl -i -u '${USERNAME}:${PASSWORD}' -F 'file=/data/${COMMIT}.tar.gz' https://upload.bohicalabs.com"
+    when:
+      repo:
+        - BOHICA-LABS/BLAOS
 
   - name: generate releaselog
     image: quay.io/git-chglog/git-chglog:latest
